@@ -1,0 +1,16 @@
+module Planvine
+  class PlanvineAPI
+    include HTTParty
+    base_uri 'http://planvine.com/api/v1'
+
+    def initialize(api_key)
+      @api_key = api_key
+    end
+
+    def events
+      self.class.get("/event?api_key=#{@api_key}")["data"].map do |event|
+        EventsBuilder.build(event)
+      end
+    end
+  end
+end
