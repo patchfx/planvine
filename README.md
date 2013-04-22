@@ -18,7 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Return events
+
+    Planvine.for('My-API-KEY').events
 
 ## Contributing
 
