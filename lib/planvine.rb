@@ -1,6 +1,7 @@
 require 'httparty'
 require "planvine/version"
 require "planvine/planvine_api"
+require "planvine/event"
 require "planvine/builders/events_builder"
 
 module Planvine
