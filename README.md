@@ -22,6 +22,15 @@ Return events
 
     Planvine.for('My-API-KEY').events
 
+Return categories
+
+    planvine = Planvine.for('MY-API-KEY')
+    planvine.categories
+
+    #return events for a category
+    category = planvine.categories.first
+    category.events
+
 ## Contributing
 
 1. Fork it
