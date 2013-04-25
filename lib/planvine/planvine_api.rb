@@ -14,7 +14,8 @@ module Planvine
     end
 
     def categories
-      self.class.get("/category?api_key=#{@api_key}")["data"].map do |category|
+      categories = self.class.get("/category?api_key=#{@api_key}")
+      JSON.parse(categories)["data"].map do |category|
         CategoriesBuilder.build(category, self)
       end
     end

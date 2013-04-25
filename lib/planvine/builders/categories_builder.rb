@@ -2,7 +2,7 @@ module Planvine
   class CategoriesBuilder
     def self.build(category, api)
       Category.new(
-        :photo => category["photo"]["url"],
+        :photo => (category["photo"] ? category["photo"]["url"] : ''),
         :slug => category["slug"],
         :name => category["name"],
         :id => category["id"],
@@ -27,7 +27,7 @@ module Planvine
     end
 
     def photo
-      @params.fetch(:photo)
+      @params.fetch(:photo, nil)
     end
 
     def slug
