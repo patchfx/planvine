@@ -4,6 +4,10 @@ module Planvine
       @params = params
     end
 
+    def venue
+      @params.fetch(:venue)
+    end
+
     def end_date
       @params.fetch(:end_date, '')
     end
