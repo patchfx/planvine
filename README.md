@@ -1,6 +1,6 @@
 # Planvine
 
-TODO: Write a gem description
+Ruby lib that wraps the Planvine API.
 
 ## Installation
 
