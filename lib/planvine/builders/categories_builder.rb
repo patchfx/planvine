@@ -2,11 +2,11 @@ module Planvine
   class CategoriesBuilder
     def self.build(category, api)
       Category.new(
-        photo: category["photo"]["url"],
-        slug: category["slug"],
-        name: category["name"],
-        id: category["id"],
-        api: api
+        :photo => category["photo"]["url"],
+        :slug => category["slug"],
+        :name => category["name"],
+        :id => category["id"],
+        :api => api
       )
     end
   end
