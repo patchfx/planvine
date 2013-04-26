@@ -1,35 +1,31 @@
-class Planvine
+module Planvine
   class Venue
     def initialize(params)
       @params = params
     end
 
     def uid
-      @params.fetch("uid")
+      @params.fetch(:uid)
+    end
+
+    def name
+      @params.fetch(:name)
     end
 
     def lat
-      @params.fetch("lat")
+      @params.fetch(:lat)
     end
 
     def lng
-      @params.fetch("lng")
+      @params.fetch(:lng)
+    end
+
+    def address
+      @params.fetch(:address)
     end
 
     def short_address
-      @params.fetch("short_address")
-    end
-
-    def short_date
-      @params.fetch("short_date_string")
-    end
-
-    def long_date_string
-      @params.fetch("long_date_string")
-    end
-
-    def venue_id
-      @params.fetch("id")
+      @params.fetch(:short_address)
     end
   end
 end
