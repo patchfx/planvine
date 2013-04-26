@@ -19,5 +19,9 @@ module Planvine
         CategoriesBuilder.build(category, self)
       end
     end
+
+    def category_events(id)
+      JSON.parse(self.class.get("/category/#{id}/events?api_key=#{@api_key}"))["data"]
+    end
   end
 end

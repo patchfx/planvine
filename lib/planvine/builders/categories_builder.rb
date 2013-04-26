@@ -17,7 +17,7 @@ module Planvine
     end
 
     def events
-      self.class.get("/category/#{id}/events?api_key=#{@api_key}")["data"].map do |event|
+      api.category_events(id).map do |event|
         EventsBuilder.build(event)
       end
     end
