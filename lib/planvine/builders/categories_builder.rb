@@ -17,6 +17,7 @@ module Planvine
     end
 
     def events
+      return [] if api.category_events(id).nil?
       api.category_events(id).map do |event|
         EventsBuilder.build(event)
       end
