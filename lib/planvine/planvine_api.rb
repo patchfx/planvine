@@ -24,5 +24,9 @@ module Planvine
     def category_events(id)
       self.class.get("/category/#{id}/events?api_key=#{@api_key}")["data"]
     end
+
+    def venue(id)
+      Venue.new(self.class.get("/venue/#{id}?api_key=#{@api_key}")["data"])
+    end
   end
 end
