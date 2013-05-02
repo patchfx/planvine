@@ -8,6 +8,18 @@ module Planvine
       @params.fetch(:venue)
     end
 
+    def description
+      @params.fetch(:description, '')
+    end
+
+    def source
+      @params.fetch(:source, '')
+    end
+
+    def url
+      @params.fetch(:url, '')
+    end
+
     def end_date
       @params.fetch(:end_date, '')
     end
