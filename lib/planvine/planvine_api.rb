@@ -1,6 +1,7 @@
 module Planvine
   class PlanvineAPI
     include HTTParty
+    format :json
     base_uri 'http://planvine.com/api/v1'
 
     def initialize(api_key)
@@ -15,13 +16,13 @@ module Planvine
 
     def categories
       categories = self.class.get("/category?api_key=#{@api_key}")
-      JSON.parse(categories)["data"].map do |category|
+      categories["data"].map do |category|
         CategoriesBuilder.build(category, self)
       end
     end
 
     def category_events(id)
-      JSON.parse(self.class.get("/category/#{id}/events?api_key=#{@api_key}"))["data"]
+      self.class.get("/category/#{id}/events?api_key=#{@api_key}")["data"]
     end
   end
 end
