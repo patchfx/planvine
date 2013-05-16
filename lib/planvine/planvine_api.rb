@@ -22,7 +22,15 @@ module Planvine
     end
 
     def category_events(id)
-      self.class.get("/category/#{id}/events?api_key=#{@api_key}")["data"]
+      number_of_pages = self.class.get("/category/#{id}/events?api_key=#{@api_key}")["_metadata"]["total_pages"]
+      events = [self.class.get("/category/#{id}/events?api_key=#{@api_key}")["data"]]
+      return events if number_of_pages == 1
+
+      self.class.get("/category/#{id}/events?api_key=#{@api_key}")["_metadata"]["total_pages"].times do |i|
+        next if (i+1) == 1
+        events << self.class.get("/category/#{id}/events?api_key=#{@api_key}&page=#{i + 1}")["data"]
+      end
+      events.flatten
     end
 
     def venue(id)
