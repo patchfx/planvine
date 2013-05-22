@@ -37,6 +37,10 @@ module Planvine
       events.flatten
     end
 
+    def event(id)
+      self.class.get("/event/#{id}?api_key=#{@api_key}")["data"]
+    end
+
     def venue(id)
       Venue.new(self.class.get("/venue/#{id}?api_key=#{@api_key}")["data"])
     end
