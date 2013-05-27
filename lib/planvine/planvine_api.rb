@@ -32,9 +32,11 @@ module Planvine
 
       self.class.get("/category/#{id}/events?api_key=#{@api_key}")["_metadata"]["total_pages"].times do |i|
         next if (i+1) == 1
-        events << self.class.get("/category/#{id}/events?api_key=#{@api_key}&page=#{i + 1}")["data"]
+        page = self.class.get("/category/#{id}/events?api_key=#{@api_key}&page=#{i + 1}")["data"]
+
+        events << page
       end
-      events.flatten
+      events
     end
 
     def event(id)
