@@ -21,22 +21,8 @@ module Planvine
       end
     end
 
-    def category_events(id)
-      begin
-        number_of_pages = self.class.get("/category/#{id}/events?api_key=#{@api_key}")["_metadata"]["total_pages"]
-      rescue
-        number_of_pages = 1
-      end
-      events = [self.class.get("/category/#{id}/events?api_key=#{@api_key}")["data"]]
-      return events if number_of_pages == 1
-
-      self.class.get("/category/#{id}/events?api_key=#{@api_key}")["_metadata"]["total_pages"].times do |i|
-        next if (i+1) == 1
-        page = self.class.get("/category/#{id}/events?api_key=#{@api_key}&page=#{i + 1}")["data"]
-
-        events << page
-      end
-      events
+    def category_events(id, results_count=100)
+      self.class.get("/category/#{id}/events?api_key=#{@api_key}&results_per_page=#{results_count}")["data"]
     end
 
     def event(id)

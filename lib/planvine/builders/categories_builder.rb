@@ -18,12 +18,9 @@ module Planvine
 
     def events
       return [] if api.category_events(id).nil?
-      api.category_events(id).map do |events|
-        events.map do |event|
-          full_event = api.event(event["id"])
-          EventsBuilder.build(full_event)
-        end
-      end.flatten
+      api.category_events(id).map do |event|
+        EventsBuilder.build(event)
+      end
     end
 
     def api
